@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Movie Recommendation System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .login-card h1, 
+        .login-card label, 
+        .login-card p {
+            color: #fff;
+        }
+        .login-card .form-control {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: none;
+        }
+        .login-card .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .login-card .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: #6c63ff;
+            box-shadow: none;
+        }
+        .login-card a {
+            color: #6c63ff;
+        }
+        .login-card a:hover {
+            text-decoration: underline;
+        }
+        .btn-primary {
+            background-color: #6c63ff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #574b90;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h1>Login</h1>
+        <form method="POST" action="/login">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <p class="text-center text-danger mt-3">{% if error %}{{ error }}{% endif %}</p>
+        <p class="text-center mt-2">
+            Don't have an account? <a href="/register">Register here</a>
+        </p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

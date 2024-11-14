@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index - Movie Recommendation System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            min-height: 100vh;
+        }
+
+        .nav-link {
+            margin: 0 5px;
+        }
+
+        .card {
+            background-color: #2c2f33;
+            border: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .table-dark th, .table-dark td {
+            vertical-align: middle;
+        }
+
+        .btn-block {
+            border-radius: 50px;
+        }
+
+        .form-control {
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-dark text-light">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Movie Recommendations</h1>
+
+        <!-- Menu Navigasi -->
+        <nav class="mb-4">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-secondary text-light" href="/">🏠 Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-danger text-light" href="/logout">🚪 Logout</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Form Pencarian -->
+        <form method="POST" action="/recommend" class="mb-5">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="movie_genre">Genre:</label>
+                    <input type="text" class="form-control" id="movie_genre" name="movie_genre" placeholder="Enter Genre">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="movie_year">Year:</label>
+                    <input type="number" class="form-control" id="movie_year" name="movie_year" placeholder="Enter Year" min="1900" max="2100">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="movie_title">Movie Title:</label>
+                    <input type="text" class="form-control" id="movie_title" name="movie_title" placeholder="Enter Movie Title">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">🎬 Get Recommendations</button>
+        </form>
+
+        {% if recommendations %}
+        <h2 class="text-center mb-4">Recommended Movies</h2>
+        <div class="row">
+            {% for movie in recommendations %}
+            <div class="col-md-3 mb-4">
+                <div class="card text-light">
+                    <img src="{{ movie['Poster'] }}" class="card-img-top" alt="{{ movie['Title'] }} Poster">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ movie['Title'] }}</h5>
+                        <p class="card-text">IMDB Score: {{ movie['IMDB Score'] }}</p>
+                        <p class="card-text">Year: {{ movie['year']|int }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-center">No recommendations found. Please try again with different criteria.</p>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

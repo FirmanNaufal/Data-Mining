@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Movie Recommendation System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .register-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .register-card h1,
+        .register-card label,
+        .register-card p {
+            color: #fff; /* Mengubah warna teks menjadi putih */
+        }
+        .register-card .form-control {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff; /* Warna teks input putih */
+            border: none;
+        }
+        .register-card .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6); /* Placeholder agak transparan */
+        }
+        .register-card .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: #6c63ff;
+            box-shadow: none;
+        }
+        .btn-primary {
+            background-color: #6c63ff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #574b90;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-card">
+        <h1>Register</h1>
+        <form method="POST" action="/register">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Choose a username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Choose a password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </form>
+        <p class="text-center mt-2">
+            Already have an account? <a href="/login">Login here</a>
+        </p>
+    </div>
+</body>
+</html>
